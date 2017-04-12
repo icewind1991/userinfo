@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<info>
+	<id>userinfo</id>
+	<name>User info</name>
+	<description>API to provide user information</description>
+	<licence>AGPL</licence>
+	<author>Robin Appelman</author>
+	<version>0.1.0</version>
+	<namespace>UserInfo</namespace>
+	<dependencies>
+		<nextcloud min-version="12" max-version="12"/>
+	</dependencies>
+</info>
