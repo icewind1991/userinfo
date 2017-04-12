@@ -61,8 +61,8 @@ class UserInfoManager {
 				'displayname' => $user->getDisplayName(),
 				'enabled' => $user->isEnabled(),
 				'quota' => $user->getQuota(),
-				'total_space' => $usage[$user->getUID()],
-				'used_quota' => $usedQuota[$user->getUID()],
+				'total_space' => (int)$usage[$user->getUID()],
+				'used_quota' => (int)$usedQuota[$user->getUID()],
 				'last_login' => $lastLogin->format(\DateTime::ATOM)
 			];
 		}, $users);
