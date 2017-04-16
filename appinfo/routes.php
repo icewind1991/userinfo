@@ -11,6 +11,11 @@ $application->registerRoutes(
 				'verb' => 'GET'
 			],
 			[
+				'name' => 'Info#getUser',
+				'url' => '/users/{user}',
+				'verb' => 'GET'
+			],
+			[
 				'name' => 'Info#getGroups',
 				'url' => '/groups',
 				'verb' => 'GET'
