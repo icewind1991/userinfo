@@ -57,7 +57,9 @@ class InfoController extends Controller {
 		$this->groupManager = $groupManager;
 	}
 
-
+	/**
+	 * @NoCSRFRequired
+	 */
 	public function getUser($user) {
 		if ($this->userManager->userExists($user) !== true) {
 			return null;
