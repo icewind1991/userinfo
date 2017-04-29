@@ -61,8 +61,8 @@ class UserInfoManager {
 				'displayname' => $user->getDisplayName(),
 				'enabled' => $user->isEnabled(),
 				'quota' => $user->getQuota(),
-				'total_space' => (int)$usage[$user->getUID()],
-				'used_quota' => (int)$usedQuota[$user->getUID()],
+				'total_space' => (key_exists($user->getUID(), $usage)) ? (int)$usage[$user->getUID()] : 0,
+				'used_quota' => (key_exists($user->getUID(), $usedQuota)) ?(int)$usedQuota[$user->getUID()] : 0,
 				'last_login' => $lastLogin->format(\DateTime::ATOM)
 			];
 		}, $users);
