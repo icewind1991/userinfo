@@ -60,6 +60,22 @@ class InfoController extends Controller {
 	/**
 	 * @NoCSRFRequired
 	 */
+	public function getUser($user) {
+		if ($this->userManager->userExists($user) !== true) {
+			return null;
+		}
+
+		$users = [];
+		$users[] = $this->userManager->get($user);
+
+		return $this->infoManager->getUsersInfo($users);
+	}
+
+
+
+	/**
+	 * @NoCSRFRequired
+	 */
 	public function getUsers() {
 		$users = [];
 		$this->userManager->callForAllUsers(function (IUser $user) use (&$users) {
