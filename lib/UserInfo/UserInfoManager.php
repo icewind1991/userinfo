@@ -79,7 +79,14 @@ class UserInfoManager {
 			->where($query->expr()->in('user_id', $query->createNamedParameter($userIds, IQueryBuilder::PARAM_INT_ARRAY)))
 			->groupBy('user_id');
 
-		return $query->execute()->fetchAll(\PDO::FETCH_KEY_PAIR);
+		$results = $query->execute()->fetchAll();
+
+		$returnObject = [];
+		foreach ($results as $result) {
+			$returnObject[array_shift($result)] = array_shift($result);
+		}
+
+		return $returnObject;
 	}
 
 	public function getUsedQuota(array $userIds) {
@@ -97,6 +104,13 @@ class UserInfoManager {
 			->where($query->expr()->in('mount_point', $query->createNamedParameter($mountPoints, IQueryBuilder::PARAM_STR_ARRAY)))
 			->andWhere($query->expr()->eq('path_hash', $query->createNamedParameter($pathHash)));
 
-		return $query->execute()->fetchAll(\PDO::FETCH_KEY_PAIR);
+		$results = $query->execute()->fetchAll();
+
+		$returnObject = [];
+		foreach ($results as $result) {
+			$returnObject[array_shift($result)] = array_shift($result);
+		}
+
+		return $returnObject;
 	}
 }
